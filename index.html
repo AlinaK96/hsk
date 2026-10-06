@@ -1,0 +1,1826 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSK 3 — Грамматика и конструкции</title>
+    <style>
+      :root {
+        --bg: #fafafa;
+        --card: #ffffff;
+        --text: #1a1a1a;
+        --muted: #666;
+        --accent: #c0392b;
+        --accent-soft: #fdecea;
+        --border: #e0e0e0;
+        --green: #27ae60;
+        --blue: #2980b9;
+        --yellow: #f39c12;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+          "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        margin: 0;
+        padding: 40px 20px 40px 280px;
+      }
+
+      /* === БОКОВАЯ НАВИГАЦИЯ === */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100vh;
+        background: var(--card);
+        border-right: 1px solid var(--border);
+        padding: 30px 0;
+        overflow-y: auto;
+        z-index: 100;
+        transition: transform 0.3s ease;
+      }
+
+      .sidebar h4 {
+        margin: 0 24px 16px 24px;
+        font-size: 13px;
+        text-transform: uppercase;
+        color: var(--muted);
+        letter-spacing: 1.2px;
+        font-weight: 700;
+      }
+
+      .sidebar ol {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: nav;
+      }
+
+      .sidebar li {
+        counter-increment: nav;
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 9px 24px 9px 44px;
+        color: var(--text);
+        text-decoration: none;
+        font-size: 14px;
+        border-left: 3px solid transparent;
+        transition: all 0.2s ease;
+        position: relative;
+        line-height: 1.4;
+      }
+
+      .sidebar a::before {
+        content: counter(nav);
+        position: absolute;
+        left: 20px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .sidebar a:hover {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .sidebar a.active {
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-left-color: var(--accent);
+        font-weight: 600;
+      }
+
+      .sidebar a.active::before {
+        color: var(--accent);
+      }
+
+      /* Скрыть скроллбар в сайдбаре, но оставить прокрутку */
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 3px;
+      }
+      .sidebar::-webkit-scrollbar-thumb:hover {
+        background: #999;
+      }
+
+      /* === КОНТЕНТ === */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--card);
+        padding: 50px 60px;
+        border-radius: 12px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Заголовки */
+      h1 {
+        font-size: 32px;
+        margin: 0 0 8px 0;
+        color: var(--accent);
+        border-bottom: 3px solid var(--accent);
+        padding-bottom: 12px;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin: 48px 0 16px 0;
+        padding: 10px 16px;
+        background: var(--accent-soft);
+        border-left: 5px solid var(--accent);
+        border-radius: 4px;
+        color: var(--accent);
+        scroll-margin-top: 20px;
+      }
+
+      h3 {
+        font-size: 17px;
+        margin: 28px 0 12px 0;
+        color: var(--text);
+        padding-bottom: 6px;
+        border-bottom: 1px dashed var(--border);
+      }
+
+      h3 .cn {
+        color: var(--accent);
+        font-weight: 700;
+        margin-right: 8px;
+      }
+
+      /* Таблицы */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0 20px 0;
+        font-size: 14px;
+      }
+
+      th {
+        background: #f5f5f5;
+        text-align: left;
+        padding: 10px 12px;
+        font-weight: 600;
+        border-bottom: 2px solid var(--border);
+        color: var(--muted);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:hover {
+        background: #fafafa;
+      }
+
+      .cn-cell {
+        font-size: 15px;
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      /* Метки */
+      .tag {
+        display: inline-block;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-weight: 600;
+        margin-right: 4px;
+      }
+
+      .tag-speak {
+        background: #e8f5e9;
+        color: var(--green);
+      }
+      .tag-write {
+        background: #e3f2fd;
+        color: var(--blue);
+      }
+      .tag-both {
+        background: #fff3e0;
+        color: var(--yellow);
+      }
+
+      /* Пометки */
+      .note {
+        background: #fffbea;
+        border-left: 4px solid var(--yellow);
+        padding: 10px 16px;
+        margin: 12px 0;
+        font-size: 14px;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .note strong {
+        color: #b8860b;
+      }
+
+      .rule {
+        background: #eef7ff;
+        border-left: 4px solid var(--blue);
+        padding: 10px 16px;
+        margin: 12px 0;
+        font-size: 14px;
+        border-radius: 0 6px 6px 0;
+      }
+
+      .rule strong {
+        color: var(--blue);
+      }
+
+      /* Примеры */
+      .example {
+        background: #f8f9fa;
+        border-radius: 6px;
+        padding: 12px 16px;
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .example .cn {
+        color: var(--accent);
+        font-weight: 500;
+      }
+      .example .ru {
+        color: var(--muted);
+        font-size: 13px;
+        display: block;
+        margin-top: 2px;
+      }
+
+      /* ✅❌❓ */
+      .ok {
+        color: var(--green);
+        font-weight: 700;
+      }
+      .no {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .q {
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      /* === КНОПКА НАВЕРХ === */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        box-shadow: 0 4px 12px rgba(192, 57, 43, 0.35);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        z-index: 200;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        background: #a93226;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(192, 57, 43, 0.45);
+      }
+
+      .back-to-top:active {
+        transform: translateY(-1px);
+      }
+
+      /* === КНОПКА МЕНЮ (мобильная) === */
+      .menu-toggle {
+        display: none;
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        z-index: 150;
+        background: var(--accent);
+        color: white;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Затемнение фона */
+      .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 90;
+      }
+
+      /* Печать */
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+        .sidebar,
+        .back-to-top,
+        .menu-toggle,
+        .overlay {
+          display: none !important;
+        }
+        .container {
+          box-shadow: none;
+          padding: 20px;
+          max-width: 100%;
+        }
+        h2 {
+          page-break-after: avoid;
+        }
+        table {
+          page-break-inside: avoid;
+        }
+        tr:hover {
+          background: transparent;
+        }
+      }
+
+      /* Планшеты */
+      @media (max-width: 1100px) {
+        body {
+          padding-left: 220px;
+        }
+        .sidebar {
+          width: 200px;
+        }
+        .sidebar a {
+          padding: 8px 16px 8px 36px;
+          font-size: 13px;
+        }
+        .sidebar a::before {
+          left: 14px;
+        }
+      }
+
+      /* Мобильные */
+      @media (max-width: 800px) {
+        body {
+          padding: 70px 12px 20px 12px;
+        }
+
+        .menu-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .sidebar {
+          transform: translateX(-100%);
+          width: 260px;
+          box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sidebar.open {
+          transform: translateX(0);
+        }
+
+        .overlay.open {
+          display: block;
+        }
+
+        .container {
+          padding: 24px 18px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        h2 {
+          font-size: 18px;
+        }
+        table {
+          font-size: 13px;
+        }
+        th,
+        td {
+          padding: 8px 6px;
+        }
+
+        .back-to-top {
+          bottom: 20px;
+          right: 20px;
+          width: 44px;
+          height: 44px;
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Кнопка меню (мобильная) -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Меню">☰</button>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- БОКОВАЯ НАВИГАЦИЯ -->
+    <nav class="sidebar" id="sidebar">
+      <h4>Содержание</h4>
+      <ol>
+        <li><a href="#t1">Время и длительность</a></li>
+        <li><a href="#t2">Выделение и акцент</a></li>
+        <li><a href="#t3">Сравнение</a></li>
+        <li><a href="#t4">Дополнения (补语)</a></li>
+        <li><a href="#t5">Модальные глаголы</a></li>
+        <li><a href="#t6">Наречия и степени</a></li>
+        <li><a href="#t7">Союзы и сложные предложения</a></li>
+        <li><a href="#t8">Глагольные конструкции</a></li>
+        <li><a href="#t9">Выражение мнения</a></li>
+        <li><a href="#t10">Приблизительность</a></li>
+        <li><a href="#t11">Пассив и 把</a></li>
+        <li><a href="#t12">Топ-10 для экзамена</a></li>
+      </ol>
+    </nav>
+
+    <!-- КОНТЕНТ -->
+    <div class="container">
+      <h1>📒 HSK 3 — Грамматика и конструкции</h1>
+      <div class="subtitle">
+        Полный конспект для подготовки · HSK Standard Course 3.0 · уровни 1–3
+      </div>
+
+      <!-- 1 -->
+      <h2 id="t1">1. Время и длительность</h2>
+
+      <h3><span class="cn">在 + V + 呢</span> — действие прямо сейчас</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>在 + V + 呢</td>
+          <td class="cn-cell">我在看书呢。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>没在 + V</td>
+          <td class="cn-cell">我没在看书。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>在 + V + 吗？</td>
+          <td class="cn-cell">你在看书吗？</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Метка:</strong> <span class="tag tag-both">🗣️✍️</span> Отрицание
+        только через <strong>没</strong>.
+      </div>
+      <div class="rule">
+        <strong>Варианты:</strong> 正在 + V + 呢 (формально), 正 + V + 呢
+        (акцент на моменте)
+      </div>
+
+      <h3><span class="cn">刚 / 刚才 / 才</span> — только что, только лишь</h3>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Значение</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">刚 + V</td>
+          <td>только что (недавно)</td>
+          <td>他刚走。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">刚刚 + V</td>
+          <td>только что (усиление)</td>
+          <td>他刚刚走。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">刚才 + V</td>
+          <td>только что (время)</td>
+          <td>他刚才走了。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">才 + V</td>
+          <td>только лишь (поздно)</td>
+          <td>他八点才来。</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th></th>
+          <th>刚 / 刚刚</th>
+          <th>刚才</th>
+        </tr>
+        <tr>
+          <td>Часть речи</td>
+          <td>наречие</td>
+          <td>сущ. времени</td>
+        </tr>
+        <tr>
+          <td>Позиция</td>
+          <td>перед V</td>
+          <td>перед подлежащим</td>
+        </tr>
+        <tr>
+          <td>С 了</td>
+          <td>❌ обычно без 了</td>
+          <td>✅ можно с 了</td>
+        </tr>
+        <tr>
+          <td>Пример</td>
+          <td>他刚走。</td>
+          <td>他刚才走了。</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">要……了 / 快要……了 / 就要……了</span> — скоро</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>要 + V + 了</td>
+          <td class="cn-cell">要下雨了。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>快要 + V + 了</td>
+          <td class="cn-cell">快要下雨了。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>就要 + V + 了</td>
+          <td class="cn-cell">就要下雨了。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>还没 + V + 呢</td>
+          <td class="cn-cell">还没下雨呢。</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Оттенок</th>
+          <th>Со временем?</th>
+        </tr>
+        <tr>
+          <td>要……了</td>
+          <td>скоро</td>
+          <td>✅ 明天要下雨了。</td>
+        </tr>
+        <tr>
+          <td>快要……了</td>
+          <td>вот-вот</td>
+          <td>❌ *明天快要下雨了。</td>
+        </tr>
+        <tr>
+          <td>就要……了</td>
+          <td>вот-вот</td>
+          <td>✅ 明天就要下雨了。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Другие способы будущего:</strong> 会 + V (буду), 将 + V
+        (формально), 打算 + V (планировать), 准备 + V (собираться)
+      </div>
+
+      <h3><span class="cn">都……了</span> — уже</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>都 + 了</td>
+          <td class="cn-cell">都十二点了。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>还没……呢</td>
+          <td class="cn-cell">还没到十二点呢。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>都……了吗？</td>
+          <td class="cn-cell">都十二点了吗？</td>
+        </tr>
+      </table>
+      <div class="example">
+        <span class="cn">都八点了，你怎么还没起床？</span
+        ><span class="ru">Уже 8 часов, почему ты ещё не встал?</span>
+      </div>
+      <div class="example">
+        <span class="cn">他都学了三年汉语了。</span
+        ><span class="ru">Он уже три года учит китайский.</span>
+      </div>
+
+      <h3><span class="cn">先……再 / 又 / 然后……</span> — сначала…, потом…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>先 + V1，再 + V2</td>
+          <td class="cn-cell">先洗手，再吃饭。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>先 + V1，又 + V2</td>
+          <td class="cn-cell">先吃饭，又看电视。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>先 + V1，然后 + V2</td>
+          <td class="cn-cell">先学习，然后休息。</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th>Слово</th>
+          <th>Когда</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">再</td>
+          <td>будущее / план</td>
+          <td>先洗手，再吃饭。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">又</td>
+          <td>прошлое</td>
+          <td>先吃了饭，又看了电视。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">然后</td>
+          <td>универсально</td>
+          <td>先学习，然后休息。</td>
+        </tr>
+      </table>
+
+      <!-- 2 -->
+      <h2 id="t2">2. Выделение и акцент</h2>
+
+      <h3><span class="cn">是……的</span> — выделение обстоятельства</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>是 + X + V + 的</td>
+          <td class="cn-cell">我是昨天来的。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>不是 + X + V + 的</td>
+          <td class="cn-cell">我不是昨天来的。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>是 + 什么时候/在哪儿/怎么 + V + 的？</td>
+          <td class="cn-cell">你是什么时候来的？</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Метка:</strong> <span class="tag tag-both">🗣️✍️</span> Действие
+        <strong>уже произошло</strong>. Выделяет: время, место, способ, цель.
+      </div>
+      <table>
+        <tr>
+          <th>Что выделяем</th>
+          <th>Пример</th>
+          <th>Перевод</th>
+        </tr>
+        <tr>
+          <td>Время</td>
+          <td class="cn-cell">我是昨天来的。</td>
+          <td>Я приехал вчера.</td>
+        </tr>
+        <tr>
+          <td>Место</td>
+          <td class="cn-cell">我是在北京出生的。</td>
+          <td>Я родился в Пекине.</td>
+        </tr>
+        <tr>
+          <td>Способ</td>
+          <td class="cn-cell">我是坐飞机来的。</td>
+          <td>Я прилетел на самолёте.</td>
+        </tr>
+        <tr>
+          <td>Цель</td>
+          <td class="cn-cell">我是来学习的。</td>
+          <td>Я приехал учиться.</td>
+        </tr>
+        <tr>
+          <td>С кем</td>
+          <td class="cn-cell">我是跟他一起去的。</td>
+          <td>Я ходил вместе с ним.</td>
+        </tr>
+      </table>
+
+      <!-- 3 -->
+      <h2 id="t3">3. Сравнение</h2>
+
+      <h3><span class="cn">比</span> — сравнение</h3>
+      <p><strong>Структура:</strong> A + 比 + B + (更/还) + Adj / V + 补语</p>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>A 比 B + Adj</td>
+          <td class="cn-cell">他比我高。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>A 比 B + 更/还 + Adj</td>
+          <td class="cn-cell">他比我更高。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>A 比 B + V + 得 + 补语</td>
+          <td class="cn-cell">他比我跑得快。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>A 不比 B + Adj</td>
+          <td class="cn-cell">他不比我高。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>A 没有 B + Adj</td>
+          <td class="cn-cell">他没有我高。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>A 比 B + Adj + 吗？</td>
+          <td class="cn-cell">他比我高吗？</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>A 比 B + Adj + 不 + Adj？</td>
+          <td class="cn-cell">他比我高不高？</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Правило:</strong> ❌ нельзя 很/非常/太 перед Adj: *他比我很高.
+        ✅ можно 更, 还, 一点儿, 一些, 得多.
+      </div>
+      <table>
+        <tr>
+          <th>Отрицание</th>
+          <th>Значение</th>
+        </tr>
+        <tr>
+          <td>不比</td>
+          <td>не более (может быть равен или ниже)</td>
+        </tr>
+        <tr>
+          <td>没有……那么/这么</td>
+          <td>не такой…, как…</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">跟……一样</span> — такой же, как…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>A 跟 B 一样</td>
+          <td class="cn-cell">我跟他一样。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>A 跟 B 一样 + Adj</td>
+          <td class="cn-cell">我跟他一样高。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>A 跟 B 不一样</td>
+          <td class="cn-cell">我跟他不一样。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>A 跟 B 一样 + 吗？</td>
+          <td class="cn-cell">你跟他一样高吗？</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Варианты:</strong> 和……一样, 像……一样, 跟……差不多
+      </div>
+
+      <!-- 4 -->
+      <h2 id="t4">4. Дополнения (补语)</h2>
+
+      <h3><span class="cn">V + 得 + 补语</span> — дополнение состояния</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 得 + 很 + Adj</td>
+          <td class="cn-cell">他跑得很快。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 得 + 不 + Adj</td>
+          <td class="cn-cell">他跑得不快。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>V + 得 + Adj + 吗？</td>
+          <td class="cn-cell">他跑得快吗？</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>V + 得 + Adj + 不 + Adj？</td>
+          <td class="cn-cell">他跑得快不快？</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>V + 得 + 怎么样？</td>
+          <td class="cn-cell">他跑得怎么样？</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Разделяемые глаголы:</strong> V + O + V + 得 + Adj<br /><span
+          class="cn"
+          >他写字写得很好。</span
+        >
+        · <span class="cn">他唱歌唱得很好。</span>
+      </div>
+
+      <h3><span class="cn">V + 着</span> — состояние</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 着</td>
+          <td class="cn-cell">他站着。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 着 + 呢</td>
+          <td class="cn-cell">他站着呢。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>处所 + V + 着 + O</td>
+          <td class="cn-cell">墙上挂着一张画。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>没 + V + 着</td>
+          <td class="cn-cell">他没站着。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Типичные:</strong> 站着, 坐着, 躺着, 拿着, 穿着, 开着, 关着,
+        挂着, 放着
+      </div>
+
+      <h3><span class="cn">Adj + 极了</span> — чрезвычайно</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td class="cn-cell">好极了！</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td class="cn-cell">不 + Adj + 极了</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Типичные:</strong> 好极了, 棒极了, 累极了, 饿极了, 美极了
+      </div>
+
+      <h3><span class="cn">Adj + 坏了</span> — ужасно (разг.)</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td class="cn-cell">我累坏了。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td class="cn-cell">不 + Adj + 坏了</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Типичные:</strong> 累坏了, 饿坏了, 急坏了, 吓坏了, 高兴坏了
+      </div>
+
+      <!-- 5 -->
+      <h2 id="t5">5. Модальные глаголы</h2>
+      <table>
+        <tr>
+          <th>Слово</th>
+          <th>Пиньинь</th>
+          <th>Значение</th>
+          <th>Сила</th>
+          <th>Отрицание</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">应该</td>
+          <td>yīnggāi</td>
+          <td>следует, должен</td>
+          <td>средняя</td>
+          <td>不应该</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">必须</td>
+          <td>bìxū</td>
+          <td>должен, обязан</td>
+          <td>сильная</td>
+          <td>不必 / 不需要</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">得</td>
+          <td>děi</td>
+          <td>нужно, придётся</td>
+          <td>сильная, разг.</td>
+          <td>不用 / 不必</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">需要</td>
+          <td>xūyào</td>
+          <td>нужно, требуется</td>
+          <td>нейтральная</td>
+          <td>不需要</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">只好</td>
+          <td>zhǐhǎo</td>
+          <td>приходится</td>
+          <td>вынужденность</td>
+          <td>—</td>
+        </tr>
+      </table>
+      <div class="example">
+        <span class="cn">你应该多休息。</span
+        ><span class="ru">Тебе следует больше отдыхать.</span>
+      </div>
+      <div class="example">
+        <span class="cn">你必须去。</span
+        ><span class="ru">Ты обязан пойти.</span>
+      </div>
+      <div class="example">
+        <span class="cn">我得走了。</span
+        ><span class="ru">Мне нужно идти.</span>
+      </div>
+      <div class="example">
+        <span class="cn">我需要帮助。</span
+        ><span class="ru">Мне нужна помощь.</span>
+      </div>
+      <div class="example">
+        <span class="cn">下雨了，只好在家。</span
+        ><span class="ru">Пошёл дождь, приходится остаться дома.</span>
+      </div>
+
+      <!-- 6 -->
+      <h2 id="t6">6. Наречия и степени</h2>
+
+      <h3><span class="cn">挺……的</span> — довольно</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>挺 + Adj + 的</td>
+          <td class="cn-cell">他挺高的。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>挺 + V + 的</td>
+          <td class="cn-cell">我挺喜欢他的。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>挺 + 不 + Adj + 的</td>
+          <td class="cn-cell">他挺不好的。</td>
+        </tr>
+      </table>
+      <div class="note"><strong>Правило:</strong> 的 обязателен в конце!</div>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Степень</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td>有点儿</td>
+          <td>немного (негатив)</td>
+          <td>有点儿贵</td>
+        </tr>
+        <tr>
+          <td>比较</td>
+          <td>довольно</td>
+          <td>比较好</td>
+        </tr>
+        <tr>
+          <td>挺……的</td>
+          <td>довольно (разг.)</td>
+          <td>挺好的</td>
+        </tr>
+        <tr>
+          <td>很</td>
+          <td>очень</td>
+          <td>很好</td>
+        </tr>
+        <tr>
+          <td>非常</td>
+          <td>очень (книжн.)</td>
+          <td>非常好</td>
+        </tr>
+        <tr>
+          <td>太……了</td>
+          <td>слишком</td>
+          <td>太好了</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">越来越……</span> — всё более</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>越来越 + Adj</td>
+          <td class="cn-cell">天气越来越热。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>越来越 + V(псих.)</td>
+          <td class="cn-cell">我越来越喜欢中国菜。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>越来越 + 很 + Adj</td>
+          <td class="cn-cell">*越来越很高</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Разница:</strong> 越来越 — изменение во времени. 越……越…… —
+        зависимость (越学越难).
+      </div>
+
+      <h3><span class="cn">疑问词 + 都/也</span> — обобщение</h3>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Перевод</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">谁都</td>
+          <td>все</td>
+          <td>谁都知道。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">什么 + 都</td>
+          <td>всё</td>
+          <td>我什么都吃。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">哪儿 + 都</td>
+          <td>везде</td>
+          <td>他哪儿都去过。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">谁 + 也 + 不/没</td>
+          <td>никто не…</td>
+          <td>谁也不知道。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">什么 + 也 + 不/没</td>
+          <td>ничего не…</td>
+          <td>我什么也没买。</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Правило:</strong> 都 — утверждение; 也 — отрицание.
+      </div>
+
+      <!-- 7 -->
+      <h2 id="t7">7. Союзы и сложные предложения</h2>
+
+      <h3><span class="cn">因为……所以……</span> — причина → следствие</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>因为 + A，所以 + B</td>
+          <td class="cn-cell">因为下雨，所以我没去。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>为什么……？</td>
+          <td class="cn-cell">你为什么没去？</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">虽然……但是……</span> — хотя…, но…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>虽然 + A，但是 + B</td>
+          <td class="cn-cell">虽然下雨，但是我去了。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Варианты:</strong> 虽然……可是……, 尽管……但是……
+      </div>
+
+      <h3><span class="cn">如果……就……</span> — если…, то…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>如果 + A，就 + B</td>
+          <td class="cn-cell">如果下雨，我就不去。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Варианты:</strong> 要是……就……, 假如……就……, 的话
+      </div>
+
+      <h3><span class="cn">只要……就……</span> — стоит только…, и…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>只要 + A，就 + B</td>
+          <td class="cn-cell">只要努力，就能成功。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>只要 + A，才 + B</td>
+          <td>—</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Тип условия</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td>只要……就……</td>
+          <td>достаточное</td>
+          <td>只要努力，就能成功。</td>
+        </tr>
+        <tr>
+          <td>只有……才……</td>
+          <td>необходимое</td>
+          <td>只有努力，才能成功。</td>
+        </tr>
+        <tr>
+          <td>如果……就……</td>
+          <td>гипотетическое</td>
+          <td>如果努力，就能成功。</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">除了……以外</span> — кроме</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>除了……以外，……都</td>
+          <td class="cn-cell">除了他以外，我们都去了。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>除了……以外，……还/也</td>
+          <td class="cn-cell">除了汉语以外，他还学英语。</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th>Тип</th>
+          <th>Значение</th>
+          <th>Вторая часть</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td>Исключение</td>
+          <td>кроме (не включая)</td>
+          <td>都</td>
+          <td>除了他以外，我们都去了。</td>
+        </tr>
+        <tr>
+          <td>Добавление</td>
+          <td>кроме (включая)</td>
+          <td>还/也</td>
+          <td>除了他以外，我也去了。</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">又……又……</span> — и…, и…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>又 + A + 又 + B</td>
+          <td class="cn-cell">她又聪明又漂亮。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Варианты:</strong> 既……又……, 一边……一边……, 也……也……
+      </div>
+
+      <h3><span class="cn">一……就……</span> — как только…, так сразу…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>一 + V1，就 + V2</td>
+          <td class="cn-cell">我一回家就睡觉。</td>
+        </tr>
+      </table>
+      <div class="rule"><strong>Варианты:</strong> 刚……就……</div>
+
+      <h3><span class="cn">一边……一边……</span> — одновременно</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>一边 + V1 + 一边 + V2</td>
+          <td class="cn-cell">他一边吃饭一边看电视。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Разница с 又……又……:</strong> 一边……一边…… — два процесса;
+        又……又…… — два качества.
+      </div>
+
+      <h3><span class="cn">而且 / 并且</span> — к тому же</h3>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Значение</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">而且</td>
+          <td>к тому же</td>
+          <td>他会说汉语，而且说得很好。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">并且</td>
+          <td>и, к тому же (книжн.)</td>
+          <td>他学习努力，并且很聪明。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">而</td>
+          <td>а, но (контраст)</td>
+          <td>我喜欢茶，而他喜欢咖啡。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">并</td>
+          <td>и (перед 不/没)</td>
+          <td>他并没生气。</td>
+        </tr>
+      </table>
+
+      <!-- 8 -->
+      <h2 id="t8">8. Глагольные конструкции</h2>
+
+      <h3><span class="cn">动词重叠</span> — повторение глаголов</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅ AA</td>
+          <td>V + V</td>
+          <td class="cn-cell">你看看。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ A一A</td>
+          <td>V + 一 + V</td>
+          <td class="cn-cell">看一看</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ A了A</td>
+          <td>V + 了 + V</td>
+          <td class="cn-cell">看了看</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ ABAB</td>
+          <td>AB + AB</td>
+          <td class="cn-cell">商量商量</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ AB了AB</td>
+          <td>AB + 了 + AB</td>
+          <td class="cn-cell">考虑了考虑</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ AAB</td>
+          <td>A + A + B</td>
+          <td class="cn-cell">见见面</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ A了一下</td>
+          <td>V + 了一下</td>
+          <td class="cn-cell">考虑了一下</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Ограничения:</strong> ❌ нельзя с 正在 · ❌ нельзя с
+        一边...一边... · ❌ нельзя с дополнением результата
+      </div>
+
+      <h3><span class="cn">形容词重叠</span> — повторение прилагательных</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅ AA</td>
+          <td>A + A</td>
+          <td class="cn-cell">好好</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ AABB</td>
+          <td>A + A + B + B</td>
+          <td class="cn-cell">高高兴兴</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ ABAB</td>
+          <td>AB + AB</td>
+          <td class="cn-cell">雪白雪白</td>
+        </tr>
+        <tr>
+          <td class="ok">✅ A里AB</td>
+          <td>A + 里 + AB</td>
+          <td class="cn-cell">糊里糊涂</td>
+        </tr>
+      </table>
+
+      <!-- 9 -->
+      <h2 id="t9">9. Выражение мнения</h2>
+
+      <h3><span class="cn">关于</span> — о, насчёт</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>关于 + тема，……</td>
+          <td class="cn-cell">关于这个问题，我有意见。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>……关于 + тема</td>
+          <td class="cn-cell">我看了一本书，关于中国历史。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>关于 vs 对于:</strong> 关于 — тема; 对于 — объект отношения.
+      </div>
+
+      <h3><span class="cn">对……感兴趣</span> — интересоваться</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>对 + O + 感兴趣</td>
+          <td class="cn-cell">我对汉语感兴趣。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>对 + O + 不感兴趣</td>
+          <td class="cn-cell">我对足球不感兴趣。</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>对 + O + 感兴趣 + 吗？</td>
+          <td class="cn-cell">你对汉语感兴趣吗？</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">什么的 / 等等 / 之类的</span> — и так далее</h3>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Перевод</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">什么的</td>
+          <td>и тому подобное</td>
+          <td>苹果、香蕉什么的</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">等等</td>
+          <td>и так далее</td>
+          <td>苹果、香蕉等等</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">之类的</td>
+          <td>что-то в этом роде</td>
+          <td>苹果、香蕉之类的</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">以及</td>
+          <td>а также</td>
+          <td>苹果以及香蕉</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">看起来 / 看上去</span> — казаться</h3>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Перевод</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">看起来</td>
+          <td>судя по виду</td>
+          <td>他看起来很累。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">看上去</td>
+          <td>выглядеть</td>
+          <td>她看上去很年轻。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">看起来 + 好像</td>
+          <td>похоже, что…</td>
+          <td>看起来好像要下雨。</td>
+        </tr>
+      </table>
+
+      <h3><span class="cn">能……吗？</span> — разве можно…?</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>能 + V + 吗？</td>
+          <td class="cn-cell">我能不去吗？</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>能 + 不 + V + 吗？</td>
+          <td class="cn-cell">他能不来吗？</td>
+        </tr>
+        <tr>
+          <td class="q">❓</td>
+          <td>怎么能 + V + 呢？</td>
+          <td class="cn-cell">我怎么能不去呢？</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Два значения:</strong> реальный вопрос / риторический.
+      </div>
+
+      <h3><span class="cn">还是……吧</span> — лучше уж…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>还是 + V + 吧</td>
+          <td class="cn-cell">我们还是走吧。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>还是 + 不 + V + 吧</td>
+          <td class="cn-cell">还是不去吧。</td>
+        </tr>
+      </table>
+
+      <!-- 10 -->
+      <h2 id="t10">10. Приблизительность</h2>
+
+      <h3><span class="cn">左右</span> — около</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>Число + 左右</td>
+          <td class="cn-cell">三十岁左右</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>Время + 左右</td>
+          <td class="cn-cell">三点左右</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>左右 + Число</td>
+          <td>—</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Похожие:</strong> 大概 (перед числом), 差不多, 几, 多, 来
+      </div>
+
+      <h3><span class="cn">各种各样</span> — разнообразный</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>各种各样 + 的 + N</td>
+          <td class="cn-cell">各种各样的人</td>
+        </tr>
+      </table>
+      <div class="rule"><strong>Похожие:</strong> 各种, 多种多样, 各式各样</div>
+
+      <!-- 11 -->
+      <h2 id="t11">11. Пассив и 把</h2>
+
+      <h3><span class="cn">把</span>-конструкция</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>把 + O + V + 了</td>
+          <td class="cn-cell">我把书买了。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>把 + O + V + 补语</td>
+          <td class="cn-cell">他把作业做完了。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>把 + O + 不 + V</td>
+          <td>—</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Правило:</strong> после 把 глагол не может стоять один.
+      </div>
+
+      <h3><span class="cn">被</span>-пассив</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>被 + B + V + 了</td>
+          <td class="cn-cell">书被他拿走了。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>被 + V + 了</td>
+          <td class="cn-cell">他被打了。</td>
+        </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>被 + 不 + V</td>
+          <td>—</td>
+        </tr>
+      </table>
+
+      <!-- 12 -->
+      <h2 id="t12">12. Топ-10 для экзамена</h2>
+      <ol>
+        <li><span class="cn">把</span>-конструкция</li>
+        <li><span class="cn">被</span>-пассив</li>
+        <li><span class="cn">V + 得 + 补语</span></li>
+        <li><span class="cn">比</span></li>
+        <li><span class="cn">是……的</span></li>
+        <li><span class="cn">除了……以外</span></li>
+        <li><span class="cn">如果……就……</span></li>
+        <li><span class="cn">只要……就…… / 只有……才……</span></li>
+        <li><span class="cn">一边……一边……</span></li>
+        <li><span class="cn">越来越……</span></li>
+      </ol>
+
+      <div class="subtitle" style="margin-top: 60px; text-align: center">
+        📄 HSK 3 · Конспект грамматики · Удачи на экзамене! 🎯
+      </div>
+    </div>
+
+    <!-- Кнопка наверх -->
+    <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
+
+    <script>
+      // === Кнопка наверх ===
+      const backToTop = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+          backToTop.classList.add("visible");
+        } else {
+          backToTop.classList.remove("visible");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // === Активный пункт навигации при прокрутке ===
+      const sections = document.querySelectorAll("h2[id]");
+      const navLinks = document.querySelectorAll(".sidebar a");
+
+      function updateActiveNav() {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 100;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", updateActiveNav);
+      window.addEventListener("load", updateActiveNav);
+
+      // === Мобильное меню ===
+      const menuToggle = document.getElementById("menuToggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      function closeMenu() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("open");
+      }
+
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("open");
+      });
+
+      overlay.addEventListener("click", closeMenu);
+
+      // Закрыть меню при клике на ссылку
+      navLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      // Закрыть по Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+    </script>
+  </body>
+</html>
