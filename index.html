@@ -64,11 +64,33 @@
         margin: 0;
         padding: 0;
         list-style: none;
+      }
+
+      .sidebar > ol {
         counter-reset: nav;
       }
 
-      .sidebar li {
+      .sidebar > ol > li {
         counter-increment: nav;
+      }
+
+      .sidebar ol.sub {
+        margin: 0 0 10px 0;
+        padding: 0;
+      }
+
+      .sidebar ol.sub li {
+        counter-increment: none;
+      }
+
+      .sidebar ol.sub a {
+        padding: 4px 24px 4px 58px;
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      .sidebar ol.sub a::before {
+        content: none;
       }
 
       .sidebar a {
@@ -607,10 +629,6 @@
         <span class="cn">都八点了，你怎么还没起床？</span
         ><span class="ru">Уже 8 часов, почему ты ещё не встал?</span>
       </div>
-      <div class="example">
-        <span class="cn">他都学了三年汉语了。</span
-        ><span class="ru">Он уже три года учит китайский.</span>
-      </div>
 
       <h3><span class="cn">先……再 / 又 / 然后……</span> — сначала…, потом…</h3>
       <table>
@@ -657,6 +675,193 @@
           <td>先学习，然后休息。</td>
         </tr>
       </table>
+
+      <h3>
+        <span class="cn">以来 / 一直</span> — действие началось в прошлом и
+        продолжается
+      </h3>
+      <p><strong>Структура:</strong> (自从 +) Время/событие + 以来 · 一直 + V</p>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>时间 + 以来</td>
+          <td class="cn-cell">三个月以来</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>自从 + X + 以来</td>
+          <td class="cn-cell">自从学汉语以来</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>一直 + V</td>
+          <td class="cn-cell">我一直在学汉语。</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Значение:</strong> действие началось в прошлом и продолжается до
+        сих пор.
+      </div>
+      <div class="example">
+        <span class="cn">三个月以来，他一直很忙。</span
+        ><span class="ru">За последние три месяца он всё время занят.</span>
+      </div>
+
+      <h3>
+        <span class="cn">V + 了 + длительность</span> — комплемент длительности
+        (时量补语)
+      </h3>
+      <p>
+        <strong>Структура:</strong> V + 了 + длительность · V + длительность +
+        了
+      </p>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 了 + длительность</td>
+          <td class="cn-cell">我学了三年汉语。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 了 + длительность + 的 + O</td>
+          <td class="cn-cell">我学了三年的汉语。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + O + V + 了 + длительность</td>
+          <td class="cn-cell">我学汉语学了三年。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + длительность + 了</td>
+          <td class="cn-cell">我学汉语三年了。</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Разница:</strong> 学了三年 — проучился 3 года (действие
+        завершено) · 学三年了 — учу уже 3 года (и продолжаю).
+      </div>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Значение</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">V + 了 + длительность</td>
+          <td>прошло столько-то времени (завершено)</td>
+          <td>他学了三年。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">V + длительность + 了</td>
+          <td>уже столько-то (продолжается)</td>
+          <td>他学三年了。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Вопрос:</strong> V + 多长时间 / 多久？<br />
+        <span class="cn">你学汉语多长时间了？</span> — Как долго ты учишь
+        китайский?
+      </div>
+
+      <h3>
+        <span class="cn">以后 / 以前 / 前 / 后</span> — после / до, впереди /
+        позади
+      </h3>
+      <table>
+        <tr>
+          <th>Слово</th>
+          <th>Пиньинь</th>
+          <th>Значение</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">以后</td>
+          <td>yǐhòu</td>
+          <td>после, потом, в будущем</td>
+          <td>吃饭以后</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">以前</td>
+          <td>yǐqián</td>
+          <td>до, раньше, в прошлом</td>
+          <td>吃饭以前</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">前</td>
+          <td>qián</td>
+          <td>перед, впереди, …назад</td>
+          <td>三天前</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">后</td>
+          <td>hòu</td>
+          <td>после, позади, через…</td>
+          <td>三天后</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>С временем:</strong> 前 — в прошлое (三天前 — три дня назад) ·
+        后 — в будущее (三天后 — через три дня).
+      </div>
+      <table>
+        <tr>
+          <th>Конструкция</th>
+          <th>Значение</th>
+          <th>Пример</th>
+          <th>Перевод</th>
+        </tr>
+        <tr>
+          <td class="cn-cell">V + 以后</td>
+          <td>после того как…</td>
+          <td>吃完饭以后</td>
+          <td>после еды</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">V + 以前</td>
+          <td>до того как…</td>
+          <td>睡觉以前</td>
+          <td>перед сном</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">时间 + 前</td>
+          <td>… назад</td>
+          <td>三天前</td>
+          <td>три дня назад</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">时间 + 后</td>
+          <td>через …</td>
+          <td>三天后</td>
+          <td>через три дня</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">时间 + 以前</td>
+          <td>до (момента)</td>
+          <td>三天以前</td>
+          <td>три дня назад</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">时间 + 以后</td>
+          <td>после (момента)</td>
+          <td>三天以后</td>
+          <td>через три дня</td>
+        </tr>
+      </table>
+      <div class="example">
+        <span class="cn">吃完饭以后，我们去散步吧。</span
+        ><span class="ru">После еды пойдём гулять.</span>
+      </div>
 
       <!-- 2 -->
       <h2 id="t2">2. Выделение и акцент</h2>
@@ -858,7 +1063,13 @@
         · <span class="cn">他唱歌唱得很好。</span>
       </div>
 
-      <h3><span class="cn">V + 着</span> — состояние</h3>
+      <h3>
+        <span class="cn">V + 着</span> — глагольный суффикс 着 (zhe)
+      </h3>
+      <p>
+        <strong>Значения:</strong> ① длительное состояние (результат сохраняется)
+        ② продолжающееся действие.
+      </p>
       <table>
         <tr>
           <th>Форма</th>
@@ -867,21 +1078,55 @@
         </tr>
         <tr>
           <td class="ok">✅</td>
-          <td>V + 着</td>
-          <td class="cn-cell">他站着。</td>
+          <td>V + 着 (состояние)</td>
+          <td class="cn-cell">门开着。</td>
         </tr>
         <tr>
           <td class="ok">✅</td>
-          <td>V + 着 + 呢</td>
+          <td>V + 着 + 呢 (усиление)</td>
           <td class="cn-cell">他站着呢。</td>
         </tr>
-
+        <tr>
+          <td class="ok">✅</td>
+          <td>V1 + 着 + V2 (образ действия)</td>
+          <td class="cn-cell">他坐着看书。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>V + 着 + O</td>
+          <td class="cn-cell">他拿着一本书。</td>
+        </tr>
         <tr>
           <td class="no">❌</td>
-          <td>没 + V + 着</td>
-          <td class="cn-cell">他没站着。</td>
+          <td>不 + V + 着</td>
+          <td class="cn-cell">—</td>
         </tr>
       </table>
+      <div class="note">
+        <strong>Отрицание:</strong> только <strong>没 / 没有</strong> + V + 着
+        (нельзя с 不): <span class="cn">他没站着。</span>
+      </div>
+      <div class="example">
+        <span class="cn">门开着。</span
+        ><span class="ru">Дверь открыта.</span>
+      </div>
+      <div class="example">
+        <span class="cn">墙上挂着一张地图。</span
+        ><span class="ru">На стене висит карта.</span>
+      </div>
+      <div class="rule">
+        <strong>V着V着</strong> — «…и вдруг» (во время действия):<br />
+        <span class="cn">说着说着，他哭了。</span> — Он говорил и вдруг
+        заплакал.
+      </div>
+      <div class="rule">
+        <strong>Сравни:</strong> 着 — состояние/фон действия · 正在 / 在……呢 —
+        сам процесс в моменте.
+      </div>
+      <div class="rule">
+        <strong>Не ставим после:</strong> 知道, 认识, 喜欢, 爱, 有, 是 — эти
+        глаголы уже выражают состояние.
+      </div>
       <div class="rule">
         <strong>Типичные:</strong> 站着, 坐着, 躺着, 拿着, 穿着, 开着, 关着,
         挂着, 放着
@@ -976,88 +1221,89 @@
         ><span class="ru">Тебе следует больше отдыхать.</span>
       </div>
       <div class="example">
-        <span class="cn">你必须去。</span
-        ><span class="ru">Ты обязан пойти.</span>
-      </div>
-      <div class="example">
         <span class="cn">我得走了。</span
         ><span class="ru">Мне нужно идти.</span>
-      </div>
-      <div class="example">
-        <span class="cn">我需要帮助。</span
-        ><span class="ru">Мне нужна помощь.</span>
-      </div>
-      <div class="example">
-        <span class="cn">下雨了，只好在家。</span
-        ><span class="ru">Пошёл дождь, приходится остаться дома.</span>
       </div>
 
       <!-- 6 -->
       <h2 id="t6">6. Наречия и степени</h2>
 
-      <h3><span class="cn">挺……的</span> — довольно</h3>
+      <h3>
+        <span class="cn">很 / 特别 / 非常 / 太……了 / 挺……的</span> — степени
+        признака
+      </h3>
       <table>
         <tr>
-          <th>Форма</th>
-          <th>Структура</th>
+          <th>Слово</th>
+          <th>Пиньинь</th>
+          <th>Значение</th>
+          <th>Сила</th>
           <th>Пример</th>
         </tr>
         <tr>
-          <td class="ok">✅</td>
-          <td>挺 + Adj + 的</td>
-          <td class="cn-cell">他挺高的。</td>
-        </tr>
-        <tr>
-          <td class="ok">✅</td>
-          <td>挺 + V + 的</td>
-          <td class="cn-cell">我挺喜欢他的。</td>
-        </tr>
-        <tr>
-          <td class="no">❌</td>
-          <td>挺 + 不 + Adj + 的</td>
-          <td class="cn-cell">他挺不好的。</td>
-        </tr>
-      </table>
-      <div class="note"><strong>Правило:</strong> 的 обязателен в конце!</div>
-      <table>
-        <tr>
-          <th>Конструкция</th>
-          <th>Степень</th>
-          <th>Пример</th>
-        </tr>
-        <tr>
-          <td>有点儿</td>
+          <td class="cn-cell">有点儿</td>
+          <td>yǒudiǎnr</td>
           <td>немного (негатив)</td>
+          <td>слабая</td>
           <td>有点儿贵</td>
         </tr>
         <tr>
-          <td>比较</td>
+          <td class="cn-cell">比较</td>
+          <td>bǐjiào</td>
           <td>довольно</td>
+          <td>слабая</td>
           <td>比较好</td>
         </tr>
         <tr>
-          <td>挺……的</td>
+          <td class="cn-cell">挺……的</td>
+          <td>tǐng…de</td>
           <td>довольно (разг.)</td>
-          <td>挺好的</td>
+          <td>средняя</td>
+          <td>挺好的。</td>
         </tr>
         <tr>
-          <td>很</td>
+          <td class="cn-cell">很</td>
+          <td>hěn</td>
           <td>очень</td>
-          <td>很好</td>
+          <td>средняя</td>
+          <td>很好。</td>
         </tr>
         <tr>
-          <td>非常</td>
+          <td class="cn-cell">特别</td>
+          <td>tèbié</td>
+          <td>особенно, очень</td>
+          <td>сильная</td>
+          <td>特别好。</td>
+        </tr>
+        <tr>
+          <td class="cn-cell">非常</td>
+          <td>fēicháng</td>
           <td>очень (книжн.)</td>
-          <td>非常好</td>
+          <td>сильная</td>
+          <td>非常好。</td>
         </tr>
         <tr>
-          <td>太……了</td>
-          <td>слишком</td>
-          <td>太好了</td>
+          <td class="cn-cell">太……了</td>
+          <td>tài…le</td>
+          <td>слишком / очень</td>
+          <td>сильная</td>
+          <td>太好了！</td>
         </tr>
       </table>
+      <div class="note">
+        <strong>Позиция:</strong> 挺……的 и 太……了 обрамляют Adj · 极了 / 坏了 —
+        после Adj (раздел 4).
+      </div>
+      <div class="rule">
+        <strong>特别 vs 非常:</strong> 特别 может быть и прилагательным «особый»
+        (特别的人) · 非常 — только наречие.
+      </div>
 
-      <h3><span class="cn">越来越……</span> — всё более</h3>
+      <h3><span class="cn">越来越……</span> — всё более, всё сильнее</h3>
+      <p>
+        <strong>Структура:</strong> Субъект + 越来越 + Прилагательное / Глагол
+        состояния
+      </p>
       <table>
         <tr>
           <th>Форма</th>
@@ -1067,14 +1313,65 @@
         <tr>
           <td class="ok">✅</td>
           <td>越来越 + Adj</td>
-          <td class="cn-cell">天气越来越热。</td>
+          <td class="cn-cell">天气越来越冷。</td>
         </tr>
         <tr>
           <td class="ok">✅</td>
-          <td>越来越 + V(псих.)</td>
+          <td>越来越 + V(состояния)</td>
           <td class="cn-cell">我越来越喜欢中国菜。</td>
         </tr>
+        <tr>
+          <td class="no">❌</td>
+          <td>越来越 + 很/非常/太 + Adj</td>
+          <td class="cn-cell">—</td>
+        </tr>
       </table>
+      <div class="note">
+        <strong>Значение:</strong> непрерывное изменение
+        <strong>одного</strong> явления во времени. Перед 越来越 нельзя ставить
+        很 / 非常 / 太.
+      </div>
+      <div class="example">
+        <span class="cn">天气越来越冷了。</span
+        ><span class="ru">Погода становится всё холоднее.</span>
+      </div>
+
+      <h3><span class="cn">越……越……</span> — чем…, тем…</h3>
+      <p><strong>Структура:</strong> 越 + A + 越 + B</p>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>越 + V + 越 + Adj</td>
+          <td class="cn-cell">他越跑越快。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>越 + V + 越 + V</td>
+          <td class="cn-cell">我越看越喜欢。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>越 + Adj + 越 + Adj</td>
+          <td class="cn-cell">越快越好。</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Значение:</strong> пропорциональная зависимость между
+        <strong>двумя</strong> явлениями — «чем больше…, тем…».
+      </div>
+      <div class="example">
+        <span class="cn">这本书我越看越有意思。</span
+        ><span class="ru">Эту книгу чем больше читаю, тем интереснее.</span>
+      </div>
+      <div class="rule">
+        <strong>Сравни:</strong> 越来越 — одно явление меняется во времени ·
+        越……越…… — взаимосвязь двух явлений.
+      </div>
 
       <h3><span class="cn">疑问词 + 都/也</span> — обобщение</h3>
       <table>
@@ -1134,6 +1431,41 @@
           <td class="cn-cell">你为什么没去？</td>
         </tr>
       </table>
+
+      <h3><span class="cn">为了 / 是为了</span> — ради, для того чтобы</h3>
+      <p>
+        <strong>Структура:</strong> 为了 + цель，+ действие · X 是为了 + цель
+      </p>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>为了 + цель，+ действие</td>
+          <td class="cn-cell">为了学好汉语，我每天练习。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>X 是为了 + цель</td>
+          <td class="cn-cell">我来中国是为了学汉语。</td>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>为 + человек / цель</td>
+          <td class="cn-cell">他这样做是为你好。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>为了 vs 因为:</strong> 为了 — цель (для чего?) · 因为 — причина
+        (почему?). <span class="cn">为什么</span> = почему.
+      </div>
+      <div class="example">
+        <span class="cn">我来中国是为了学汉语。</span
+        ><span class="ru">Я приехал в Китай, чтобы учить китайский.</span>
+      </div>
 
       <h3><span class="cn">虽然……但是……</span> — хотя…, но…</h3>
       <table>
@@ -1348,9 +1680,32 @@
           >Он не только говорит по-китайски, но и говорит очень хорошо.</span
         >
       </div>
+
+      <h3><span class="cn">不是……而是……</span> — не…, а…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>不是 + A，而是 + B</td>
+          <td class="cn-cell">他不是老师，而是学生。</td>
+        </tr>
+      </table>
+      <div class="note">
+        <strong>Значение:</strong> отрицает A и утверждает B — «не…, а…».
+      </div>
+      <div class="rule">
+        <strong>Сравни:</strong> 不但……而且…… — «не только…, но и…»
+        (добавляет) · 不是……而是…… — «не…, а…» (противопоставляет).
+      </div>
       <div class="example">
-        <span class="cn">这个办法不但好，而且很容易。</span
-        ><span class="ru">Этот способ не только хорош, но и очень прост.</span>
+        <span class="cn">不是我不想去，而是没时间。</span
+        ><span class="ru"
+          >Не то чтобы я не хотел идти — просто нет времени.</span
+        >
       </div>
 
       <!-- 8 -->
@@ -1639,40 +1994,9 @@
         2. <strong>примерно</strong> (перед числом): 差不多三十个<br />
         3. <strong>похожи, одинаковы</strong> (с 跟……一样): 我跟他差不多
       </div>
-      <table>
-        <tr>
-          <th>Конструкция</th>
-          <th>Пример</th>
-          <th>Перевод</th>
-        </tr>
-        <tr>
-          <td class="cn-cell">差不多 + V</td>
-          <td>我差不多吃完了。</td>
-          <td>Я почти доел.</td>
-        </tr>
-        <tr>
-          <td class="cn-cell">差不多 + Число</td>
-          <td>差不多十点。</td>
-          <td>Примерно 10 часов.</td>
-        </tr>
-        <tr>
-          <td class="cn-cell">A 跟 B 差不多</td>
-          <td>这个跟那个差不多。</td>
-          <td>Это почти как то.</td>
-        </tr>
-        <tr>
-          <td class="cn-cell">差不多 + 了</td>
-          <td>差不多了，走吧。</td>
-          <td>Почти всё, пойдём.</td>
-        </tr>
-      </table>
       <div class="example">
         <span class="cn">我们差不多到了。</span>
         <span class="ru">Мы почти пришли.</span>
-      </div>
-      <div class="example">
-        <span class="cn">这两个词的意思差不多。</span>
-        <span class="ru">Значения этих двух слов почти одинаковые.</span>
       </div>
 
       <h3><span class="cn">各种各样</span> — разнообразный</h3>
@@ -1761,10 +2085,6 @@
       <div class="example">
         <span class="cn">十八岁以上的人可以参加。</span>
         <span class="ru">Люди от 18 лет и старше могут участвовать.</span>
-      </div>
-      <div class="example">
-        <span class="cn">以下是我的看法。</span>
-        <span class="ru">Ниже — моё мнение.</span>
       </div>
       <!-- 11 -->
       <h2 id="t11">11. Пассив и 把</h2>
@@ -2039,13 +2359,44 @@
         <li><span class="cn">如果……就……</span></li>
         <li><span class="cn">只要……就…… / 只有……才……</span></li>
         <li><span class="cn">一边……一边……</span></li>
-        <li><span class="cn">越来越……</span></li>
+        <li><span class="cn">越来越…… / 越……越……</span></li>
       </ol>
     </div>
 
     <button class="back-to-top" id="backToTop" aria-label="Наверх">↑</button>
 
     <script>
+      // Авто-содержание: подпункты конструкций под каждой категорией
+      function buildSubnav() {
+        document.querySelectorAll("h2[id]").forEach((h2) => {
+          const link = document.querySelector(
+            '.sidebar a[href="#' + h2.id + '"]'
+          );
+          if (!link) return;
+          const h3s = [];
+          let el = h2.nextElementSibling;
+          while (el && el.tagName !== "H2") {
+            if (el.tagName === "H3") h3s.push(el);
+            el = el.nextElementSibling;
+          }
+          if (!h3s.length) return;
+          const ol = document.createElement("ol");
+          ol.className = "sub";
+          h3s.forEach((h3, j) => {
+            h3.id = h2.id + "-" + (j + 1);
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = "#" + h3.id;
+            const cn = h3.querySelector(".cn");
+            a.textContent = cn ? cn.textContent.trim() : h3.textContent.trim();
+            li.appendChild(a);
+            ol.appendChild(li);
+          });
+          link.parentElement.appendChild(ol);
+        });
+      }
+      buildSubnav();
+
       const backToTop = document.getElementById("backToTop");
 
       window.addEventListener("scroll", () => {
