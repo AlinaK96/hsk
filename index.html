@@ -592,6 +592,17 @@
           <td>他刚走。</td>
           <td>他刚才走了。</td>
         </tr>
+        <tr>
+          <td></td>
+          <td>Может стоять перед фразой времени</td>
+          <td>Без фраз времени</td>
+        </tr>
+
+        <tr>
+          <td>Отрицательные предложения</td>
+          <td>❌</td>
+          <td>✅</td>
+        </tr>
       </table>
 
       <h3><span class="cn">要……了 / 快要……了 / 就要……了</span> — скоро</h3>
@@ -700,7 +711,9 @@
         <span class="cn">以来 / 一直</span> — действие началось в прошлом и
         продолжается
       </h3>
-      <p><strong>Структура:</strong> (自从 +) Время/событие + 以来 · 一直 + V</p>
+      <p>
+        <strong>Структура:</strong> (自从 +) Время/событие + 以来 · 一直 + V
+      </p>
       <table>
         <tr>
           <th>Форма</th>
@@ -1083,12 +1096,10 @@
         · <span class="cn">他唱歌唱得很好。</span>
       </div>
 
-      <h3>
-        <span class="cn">V + 着</span> — глагольный суффикс 着 (zhe)
-      </h3>
+      <h3><span class="cn">V + 着</span> — глагольный суффикс 着 (zhe)</h3>
       <p>
-        <strong>Значения:</strong> ① длительное состояние (результат сохраняется)
-        ② продолжающееся действие.
+        <strong>Значения:</strong> ① длительное состояние (результат
+        сохраняется) ② продолжающееся действие.
       </p>
       <table>
         <tr>
@@ -1127,8 +1138,7 @@
         (нельзя с 不): <span class="cn">他没站着。</span>
       </div>
       <div class="example">
-        <span class="cn">门开着。</span
-        ><span class="ru">Дверь открыта.</span>
+        <span class="cn">门开着。</span><span class="ru">Дверь открыта.</span>
       </div>
       <div class="example">
         <span class="cn">墙上挂着一张地图。</span
@@ -1546,6 +1556,27 @@
         <strong>Варианты:</strong> 虽然……可是……, 尽管……但是……
       </div>
 
+      <h3><span class="cn">即使……也……</span> — даже если…, всё равно…</h3>
+      <table>
+        <tr>
+          <th>Форма</th>
+          <th>Структура</th>
+          <th>Пример</th>
+        </tr>
+        <tr>
+          <td class="ok">✅</td>
+          <td>即使 + A，也 + B</td>
+          <td class="cn-cell">即使下雨，我也要去。</td>
+        </tr>
+      </table>
+      <div class="rule">
+        <strong>Варианты:</strong> 就算……也…… (разг.) · 哪怕……也……
+      </div>
+      <div class="note">
+        <strong>即使 vs 虽然:</strong> 即使 — гипотетическое («даже если») · 虽然
+        — реальный факт («хотя»).
+      </div>
+
       <h3><span class="cn">如果……就……</span> — если…, то…</h3>
       <table>
         <tr>
@@ -1760,8 +1791,8 @@
         <strong>Значение:</strong> отрицает A и утверждает B — «не…, а…».
       </div>
       <div class="rule">
-        <strong>Сравни:</strong> 不但……而且…… — «не только…, но и…»
-        (добавляет) · 不是……而是…… — «не…, а…» (противопоставляет).
+        <strong>Сравни:</strong> 不但……而且…… — «не только…, но и…» (добавляет)
+        · 不是……而是…… — «не…, а…» (противопоставляет).
       </div>
       <div class="example">
         <span class="cn">不是我不想去，而是没时间。</span
@@ -2238,9 +2269,7 @@
         эмоц.)
       </div>
 
-      <h3>
-        <span class="cn">其他 / 别的 / 另外</span> — другой, остальной
-      </h3>
+      <h3><span class="cn">其他 / 别的 / 另外</span> — другой, остальной</h3>
       <table>
         <tr>
           <th>Слово</th>
@@ -2290,8 +2319,8 @@
         разговорное (обычно с 的).
       </div>
       <div class="rule">
-        <strong>另外:</strong> перед сущ. = «другой» (另外一个人); в начале фразы
-        = «кроме того» (另外，我还有一个问题).
+        <strong>另外:</strong> перед сущ. = «другой» (另外一个人); в начале
+        фразы = «кроме того» (另外，我还有一个问题).
       </div>
 
       <h3>
@@ -2488,7 +2517,7 @@
       function buildSubnav() {
         document.querySelectorAll("h2[id]").forEach((h2) => {
           const link = document.querySelector(
-            '.sidebar a[href="#' + h2.id + '"]'
+            '.sidebar a[href="#' + h2.id + '"]',
           );
           if (!link) return;
           const h3s = [];
